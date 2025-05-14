@@ -1,0 +1,17 @@
+services:
+  # Define a service named (can be any valid name)
+  python-sandbox:
+    # Instruct Docker to build the image using the Dockerfile in the current directory.
+    build: .
+
+    # Mount the current host directory into the container at /app.
+    # This means changes made on your host will reflect inside the container in real-time.
+    volumes:
+      - .:/app
+
+    # Keep STDIN open so you can interact with the container useful for REPL like Python shell.
+    stdin_open: true
+
+    # Allocate a pseudo-TTY (terminal interface)
+    # Necessary for interactive tools like `bash`, `python`, etc.
+    tty: true
